@@ -1,0 +1,6 @@
+model,cv_f1_mean,cv_f1_std,cv_accuracy_mean,cv_accuracy_std,cv_precision_mean,cv_recall_mean,test_accuracy,test_f1,test_precision,test_recall,training_time_sec,inference_latency_ms,best_params
+RBF SVM,0.9629,0.0015,0.9526,0.002,0.963,0.9628,0.96,0.9686,0.9694,0.9679,702.47,0.3573,"{'classifier__C': 100.0, 'classifier__gamma': 0.01}"
+Polynomial SVM,0.9426,0.0049,0.9264,0.0061,0.938,0.9473,0.9415,0.9538,0.961,0.9467,2333.26,0.3774,"{'classifier__C': 100.0, 'classifier__degree': 3, 'classifier__gamma': 'scale'}"
+KNN,0.9069,0.0055,0.8742,0.0078,0.8597,0.9596,0.8775,0.9097,0.8587,0.9671,40.16,0.5417,"{'classifier__n_neighbors': 25, 'classifier__p': 1, 'classifier__weights': 'distance'}"
+Linear SVM,0.8928,0.005,0.8627,0.0065,0.8897,0.896,0.877,0.9035,0.9049,0.902,176.72,0.4033,{'classifier__C': 0.1}
+Decision Tree,0.8854,0.0059,0.8545,0.0071,0.8899,0.8813,0.865,0.8951,0.8875,0.9028,80.6,0.6041,"{'classifier__criterion': 'gini', 'classifier__max_depth': 6, 'classifier__min_samples_leaf': 4, 'classifier__min_samples_split': 2}"

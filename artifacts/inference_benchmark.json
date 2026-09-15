@@ -1,0 +1,60 @@
+{
+    "timestamp": "2026-09-13 12:48:58",
+    "platform": {
+        "system": "Windows",
+        "release": "11",
+        "machine": "AMD64",
+        "processor": "Intel64 Family 6 Model 142 Stepping 12, GenuineIntel",
+        "python_version": "3.14.2"
+    },
+    "single_sample": {
+        "runs": 500,
+        "mean_ms": 26.9249,
+        "median_ms": 25.3621,
+        "p95_ms": 39.6306,
+        "p99_ms": 49.3105,
+        "min_ms": 21.1296,
+        "max_ms": 58.9932,
+        "throughput_samples_per_sec": 37.1
+    },
+    "batch_benchmarks": {
+        "batch_1": {
+            "batch_size": 1,
+            "mean_total_ms": 24.586,
+            "latency_per_sample_ms": 24.5857,
+            "samples_per_second": 40.7
+        },
+        "batch_10": {
+            "batch_size": 10,
+            "mean_total_ms": 30.924,
+            "latency_per_sample_ms": 3.0924,
+            "samples_per_second": 323.4
+        },
+        "batch_50": {
+            "batch_size": 50,
+            "mean_total_ms": 48.617,
+            "latency_per_sample_ms": 0.9723,
+            "samples_per_second": 1028.5
+        },
+        "batch_100": {
+            "batch_size": 100,
+            "mean_total_ms": 81.338,
+            "latency_per_sample_ms": 0.8134,
+            "samples_per_second": 1229.4
+        },
+        "batch_500": {
+            "batch_size": 500,
+            "mean_total_ms": 282.651,
+            "latency_per_sample_ms": 0.5653,
+            "samples_per_second": 1769.0
+        },
+        "batch_1000": {
+            "batch_size": 1000,
+            "mean_total_ms": 537.316,
+            "latency_per_sample_ms": 0.5373,
+            "samples_per_second": 1861.1
+        }
+    },
+    "includes_preprocessing": true,
+    "scientific_disclaimer": "The measured inference latency demonstrates the computational feasibility of low-latency classification under the benchmark conditions."
+}
