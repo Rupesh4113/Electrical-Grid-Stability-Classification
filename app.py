@@ -45,38 +45,61 @@ st.set_page_config(
 )
 
 
-@st.cache_data
+@st.cache_data(ttl=5)
 def load_all_artifacts():
-    """Load cached artifacts, metrics, and metadata."""
+    """Load cached artifacts, metrics, and metadata with auto-refresh."""
     metadata = {}
-    if MODEL_METADATA_PATH.exists():
-        with open(MODEL_METADATA_PATH, "r") as f:
-            metadata = json.load(f)
+    if MODEL_METADATA_PATH.exists() and MODEL_METADATA_PATH.stat().st_size > 0:
+        try:
+            with open(MODEL_METADATA_PATH, "r", encoding="utf-8") as f:
+                metadata = json.load(f)
+        except Exception as e:
+            st.error(f"Error loading metadata: {e}")
 
     metrics = {}
-    if METRICS_PATH.exists():
-        with open(METRICS_PATH, "r") as f:
-            metrics = json.load(f)
+    if METRICS_PATH.exists() and METRICS_PATH.stat().st_size > 0:
+        try:
+            with open(METRICS_PATH, "r", encoding="utf-8") as f:
+                metrics = json.load(f)
+        except Exception as e:
+            st.error(f"Error loading metrics: {e}")
 
     comparison_df = None
-    if MODEL_COMPARISON_PATH.exists():
-        comparison_df = pd.read_csv(MODEL_COMPARISON_PATH)
+    if MODEL_COMPARISON_PATH.exists() and MODEL_COMPARISON_PATH.stat().st_size > 0:
+        try:
+            comparison_df = pd.read_csv(MODEL_COMPARISON_PATH)
+        except Exception as e:
+            st.error(f"Error loading model comparison: {e}")
 
     importance_df = None
-    if FEATURE_IMPORTANCE_PATH.exists():
-        importance_df = pd.read_csv(FEATURE_IMPORTANCE_PATH)
+    if FEATURE_IMPORTANCE_PATH.exists() and FEATURE_IMPORTANCE_PATH.stat().st_size > 0:
+        try:
+            importance_df = pd.read_csv(FEATURE_IMPORTANCE_PATH)
+        except Exception as e:
+            st.error(f"Error loading feature importance: {e}")
 
     benchmark = {}
-    if INFERENCE_BENCHMARK_PATH.exists():
-        with open(INFERENCE_BENCHMARK_PATH, "r") as f:
-            benchmark = json.load(f)
+    if INFERENCE_BENCHMARK_PATH.exists() and INFERENCE_BENCHMARK_PATH.stat().st_size > 0:
+        try:
+            with open(INFERENCE_BENCHMARK_PATH, "r", encoding="utf-8") as f:
+                benchmark = json.load(f)
+        except Exception as e:
+            st.error(f"Error loading inference benchmark: {e}")
 
     raw_data = None
-    if DATASET_RAW_PATH.exists():
-        raw_data = pd.read_csv(DATASET_RAW_PATH)
+    if DATASET_RAW_PATH.exists() and DATASET_RAW_PATH.stat().st_size > 0:
+        try:
+            raw_data = pd.read_csv(DATASET_RAW_PATH)
+        except Exception as e:
+            st.error(f"Error loading raw dataset: {e}")
 
     return metadata, metrics, comparison_df, importance_df, benchmark, raw_data
 
+
+# Sidebar Reload Artifacts button
+if st.sidebar.button("🔄 Reload Model Artifacts", help="Flush cache and reload generated models and artifacts"):
+    st.cache_data.clear()
+    st.rerun()
 
 metadata, metrics, comparison_df, importance_df, benchmark, raw_data = load_all_artifacts()
 

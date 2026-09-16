@@ -135,11 +135,11 @@ Summary of actual cross-validation and holdout test performance (calculated dire
 
 | Model | CV F1 (Mean ± Std) | CV Accuracy | Holdout F1 | Holdout Accuracy | Holdout ROC-AUC | Training Time |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **RBF SVM** | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic |
-| **Polynomial SVM** | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic |
-| **KNN** | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic |
-| **Decision Tree** | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic |
-| **Linear SVM** | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic | Dynamic |
+| **RBF SVM** (Winner) | **0.9629 ± 0.0015** | **95.26%** | **0.9686** | **96.00%** | **0.9944** | 702.47s |
+| **Polynomial SVM** | 0.9426 ± 0.0049 | 92.64% | 0.9538 | 94.15% | 0.9856 | 2333.26s |
+| **KNN** | 0.9069 ± 0.0055 | 87.42% | 0.9097 | 87.75% | 0.9463 | 40.16s |
+| **Linear SVM** | 0.8928 ± 0.0050 | 86.27% | 0.9035 | 87.70% | 0.9421 | 176.72s |
+| **Decision Tree** | 0.8854 ± 0.0059 | 85.45% | 0.8951 | 86.50% | 0.9063 | 80.60s |
 
 *(Full metrics automatically serialized to `artifacts/model_comparison.csv` and `artifacts/metrics.json`).*
 

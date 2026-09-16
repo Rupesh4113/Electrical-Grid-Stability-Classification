@@ -61,7 +61,7 @@ def load_metadata(
         return {}
 
     if _CACHED_METADATA is None or force_reload:
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             _CACHED_METADATA = json.load(f)
 
     return _CACHED_METADATA
